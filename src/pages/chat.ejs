@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="jquery.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="chat_head">
+            chat header
+        </div>
+        <div id="chat_body">
+            <div id="left">
+                <div id="join_room">
+                    <input type="text" name="room_name" id="room_name">
+                    <input type="button" value="join" id="join_room_btn">
+                    <input type="button" value="test" id="test">
+
+                </div>
+                <ul id="chat_list_room">
+                    <% for(var i=0; i<list.length; i++) {%>
+                        <li id_room=<%= list[i].id_room %> class="132 123" >
+                            <%= list[i].rooms.name %>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div id="right">
+                    <div id="msg_box">
+                        
+                    </div>
+                    <div id="type_box">
+                        <input type="text" name="typing" id="typing">
+                        <input type="button" value="send" id="send">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="chat.js"></script>
+
+</html>

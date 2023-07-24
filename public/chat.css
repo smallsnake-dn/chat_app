@@ -1,0 +1,39 @@
+/* chat header */
+
+#chat_head {}
+
+
+/* chat body */
+#chat_body {
+    display: flex;
+}
+
+
+
+
+/* list room*/
+#chat_body #left {
+    flex-basis: 30%;
+    background-color: blueviolet;
+}
+
+
+
+/* chat box */
+#chat_body #right {
+    flex-basis: 70%;
+    background-color: bisque;
+}
+
+
+#msg_box {
+    height: 500px;
+}
+
+#type_box {
+    display: flex;
+}
+
+#type_box #typing {
+    flex-grow: 1;
+}

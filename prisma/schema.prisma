@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model room_members {
+  id_room Int
+  id_user Int
+  rooms   rooms @relation(fields: [id_room], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users   users @relation(fields: [id_user], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([id_room, id_user])
+}
+
+model rooms {
+  id           Int            @id @default(autoincrement())
+  name         String?        @db.VarChar(50)
+  msg          msg[]
+  room_members room_members[]
+}
+
+model users {
+  id           Int            @id @default(autoincrement())
+  name         String?        @db.VarChar(50)
+  username     String?        @db.VarChar(50)
+  password     String?        @db.VarChar(50)
+  msg          msg[]
+  room_members room_members[]
+}
+
+model user_sessions {
+  sid    String   @id(map: "session_pkey") @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+}
+
+model msg {
+  id        Int       @id @default(autoincrement())
+  msgfrom   Int?
+  msgto     Int?
+  timestamp DateTime? @default(now()) @db.Timestamp(6)
+  msg       String?
+  users     users?    @relation(fields: [msgfrom], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  rooms     rooms?    @relation(fields: [msgto], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}

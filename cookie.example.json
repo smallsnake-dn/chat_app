@@ -1,0 +1,12 @@
+{
+    ""cookie"": {
+        ""originalMaxAge"": 3600000,
+        ""expires"": ""2023-07-22T09: 35: 46.765Z"",
+        ""httpOnly"": true,
+        ""path"": ""/""
+    },
+    ""user"": {
+        ""name"": ""tatien"",
+        ""username"": ""tatien""
+    }
+}
